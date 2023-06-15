@@ -1,3 +1,8 @@
+.profile {
+    grid-area: c;
+    background-color: bisque;
+}
+
 .profile img {
     width: 1000px;
     height: 300px;

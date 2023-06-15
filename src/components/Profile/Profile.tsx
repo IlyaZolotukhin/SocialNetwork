@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Profile.module.css'
 import town from "../assets/images/town.jpeg";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
     return (
@@ -11,21 +12,7 @@ const Profile = () => {
             <div className={s.descriptionBlock}>
                 ava+description
             </div>
-            <div>
-                My post
-                <div>
-                    New post
-                </div>
-                    <div>
-                        <div>
-                            post1
-                        </div>
-                        <div>
-                            post2
-                        </div>
-                    </div>
-
-            </div>
+            <MyPosts/>
         </div>
     );
 }
