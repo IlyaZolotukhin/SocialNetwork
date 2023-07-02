@@ -1,19 +1,19 @@
 import React from "react";
-import s from './MyPosts.module.css'
 import Post from "./Post/Post";
-
+import s from '../MyPosts/MyPosts.module.css'
 
 const MyPosts = () => {
     return (
         <div>
-            My posts
+            <h3>My posts</h3>
             <div>
                 <textarea></textarea>
                 <button>Add Post</button>
             </div>
-
-            <Post message ='Привет' likesCount={10}/>
-            <Post message ='Пока' likesCount={20}/>
+<div className={s.posts}>
+    <Post message ='Привет' likesCount={10}/>
+    <Post message ='Пока' likesCount={20}/>
+</div>
         </div>
     );
 }
