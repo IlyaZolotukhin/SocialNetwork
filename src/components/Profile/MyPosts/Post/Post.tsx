@@ -8,7 +8,6 @@ type MessageType = {
 }
 
 const Post: React.FC<MessageType> = (props) => {
-    console.log("post")
     return (
         <div className={s.item}>
             <img src={user} alt="user"/>
