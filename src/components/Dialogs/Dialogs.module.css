@@ -4,8 +4,10 @@
 }
 
 .dialogsItems {
-    padding: 10px;
+
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .messages {
@@ -14,4 +16,49 @@
 
 .messages .message {
     color: white;
+}
+
+.dialog a {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.dialogs a:focus{
+    background-color: coral;
+}
+
+.sendForm {
+    height: 30px;
+    display: flex;
+    margin-top: 50px;
+}
+
+.textarea {
+    margin-right: 5px;
+    outline: none;
+    resize: none;
+    width: 77%;
+    height: auto;
+    border: 0;
+    padding: 15px 20px;
+    border-radius: 50px;
+    background: #F5F7FB;
+    box-shadow: 0px 1px 2px 0px rgba(29, 33, 38, 0.10), 0px 5px 20px 0px rgba(29, 33, 38, 0.03);
+    font-size: 19px;
+    overflow: hidden;/*убрать прокрутку*/
+}
+
+.button {
+    width: 18%;
+    margin-left: auto;
+    border-radius: 40px;
+    background: coral;
+    font-size: 26px;
+    color: #FFF;
+    border: 0;
+    cursor: pointer;
 }
