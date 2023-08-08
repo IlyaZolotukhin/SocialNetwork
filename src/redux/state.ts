@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 export type DialogType ={
     id: number
     name: string
@@ -66,6 +68,7 @@ export const addPost = (postMessage: string) => {
     };
 
     state.profilePage.posts.push(newPost);
+    rerenderEntireTree();
 }
 
 export default state;
