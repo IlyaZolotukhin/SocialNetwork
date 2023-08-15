@@ -1,22 +1,21 @@
 import React, {ChangeEvent} from "react";
 import Post from "./Post/Post";
 import s from '../MyPosts/MyPosts.module.css'
-import {PostType, ProfilePageType} from "../../../redux/state";
+import {ActionsTypes, PostType, ProfilePageType} from "../../../redux/state";
 
 type PostsPropsType = {
     profilePage: ProfilePageType
-    addPost: (postMessage: string) => void
-    updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 const MyPosts = (props: PostsPropsType) => {
 
     let addPost = () => {
-        props.addPost(props.profilePage.newPostText);
+        props.dispatch({type: 'ADD-POST'});
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewPostText(e.currentTarget.value);
+        props.dispatch({type:"UPDATE-NEW-POST-TEXT", newText: e.currentTarget.value});
     }
 
     let postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
