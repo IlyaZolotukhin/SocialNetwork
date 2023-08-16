@@ -1,25 +1,30 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css'
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import {DialogPageType} from "../../redux/state";
+import {
+    ActionsTypes,
+    DialogPageType
+} from "../../redux/state";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
 
 type DialogsPropsType = {
     state: DialogPageType
+    dispatch: (action: ActionsTypes) => void
 }
 
 const Dialogs = (props: DialogsPropsType) => {
 
-
-    let newDialogElement = React.createRef<HTMLTextAreaElement>();
-
-    let addDialog = () => {
-        let text = newDialogElement.current?.value
-        alert(text);
+    let onSendMessageClick = () => {
+        props.dispatch(sendMessageCreator());
+    }
+    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.dispatch(updateNewMessageBodyCreator(e.currentTarget.value));
     }
 
     let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let messagesElements = props.state.messages.map(m => <Message message={m.message} id={m.id}/>)
+    let newMessageBody = props.state.newMessageBody;
 
     return (
         <div>
@@ -28,10 +33,13 @@ const Dialogs = (props: DialogsPropsType) => {
                     {dialogsElements}
                 </div>
                 <div className={s.messages}>
-                    {messagesElements}
+                    <div>{messagesElements}</div>
                     <div className={s.sendForm}>
-                        <textarea ref={newDialogElement} className={s.textarea}></textarea>
-                        <button onClick={addDialog} className={s.button}>Send</button>
+                        <textarea value={newMessageBody}
+                                       onChange={onNewMessageChange}
+                                       placeholder='Enter your message'
+                                       className={s.textarea}></textarea>
+                        <button onClick={onSendMessageClick} className={s.button}>Send</button>
                     </div>
                 </div>
 
