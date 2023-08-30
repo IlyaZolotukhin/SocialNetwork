@@ -8,15 +8,16 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {ActionsTypes, StoreType} from "./redux/state";
+import {ActionsTypes, RootStateType, StoreType} from "./redux/store";
 
 type AppPropsType = {
     store: StoreType
+    state:RootStateType
 }
 
 const App: React.FC<AppPropsType> = (props) => {
 
-    const state = props.store.getState();
+    /*const state = props.store.getState();*/
 
     return (
             <div className='app-wrapper'>
@@ -24,10 +25,10 @@ const App: React.FC<AppPropsType> = (props) => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Route path='/profile' render={() =>
-                        <Profile state={state.profilePage}
+                        <Profile store={props.store}
                                  dispatch={props.store.dispatch.bind(props.store)} />}/>
                     <Route path='/dialogs' render={() =>
-                        <Dialogs state={state.dialogsPage}
+                        <Dialogs store={props.store}
                                  dispatch={props.store.dispatch.bind(props.store)}/>}/>
                     <Route path="/news" render={() => <News/> } />
                     <Route path="/music" render={() => <Music />} />
