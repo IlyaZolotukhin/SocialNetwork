@@ -2,31 +2,19 @@ import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css'
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import {
-    ActionsTypes,
-    DialogPageType, RootStateType, StoreType
-} from "../../redux/store";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
+import {DialogPageType} from "../../redux/store";
 
 type DialogsPropsType = {
-    store: StoreType
-    dispatch: (action: ActionsTypes) => void
+    dialogsPage: DialogPageType
+    onSendMessageClick:() => void
+    onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 const Dialogs = (props: DialogsPropsType) => {
 
-    let state = props.store.getState();
-
-    let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator());
-    }
-    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewMessageBodyCreator(e.currentTarget.value));
-    }
-
-    let dialogsElements = state.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = state.dialogsPage.messages.map(m => <Message message={m.message} id={m.id}/>)
-    let newMessageBody = state.dialogsPage.newMessageBody;
+    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message} id={m.id}/>)
+    let newMessageBody = props.dialogsPage.newMessageBody;
 
     return (
         <div>
@@ -38,19 +26,15 @@ const Dialogs = (props: DialogsPropsType) => {
                     <div>{messagesElements}</div>
                     <div className={s.sendForm}>
                         <textarea value={newMessageBody}
-                                       onChange={onNewMessageChange}
+                                       onChange={props.onNewMessageChange}
                                        placeholder='Enter your message'
                                        className={s.textarea}></textarea>
-                        <button onClick={onSendMessageClick} className={s.button}>Send</button>
+                        <button onClick={props.onSendMessageClick} className={s.button}>Send</button>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
     );
 }
-
 
 export default Dialogs;
