@@ -1,13 +1,15 @@
-import {ActionsTypes, PostType, ProfilePageType} from "./store";
+import {PostType} from "./Types";
 
-const initialState: ProfilePageType = {
+const initialState = {
     newPostText: "",
     posts: [
         {id: 1, message: "Hello!", likesCount: 10},
         {id: 2, message: "GoodBuy!", likesCount: 20}]
 };
 
-const profileReducer = (state = initialState, action:ActionsTypes) => {
+type InitialStateType = typeof initialState
+
+const profileReducer = (state:InitialStateType = initialState, action:ProfileReducerActionsType):InitialStateType => {
     switch (action.type) {
         case "ADD-POST":
             const newPost: PostType = {
@@ -15,12 +17,12 @@ const profileReducer = (state = initialState, action:ActionsTypes) => {
                 message: state.newPostText,
                 likesCount: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = "";
-            return state;
+           /* state.posts.push(newPost);
+            state.newPostText = "";*/
+            return {...state, posts: [...state.posts, newPost], newPostText: ''};
         case "UPDATE-NEW-POST-TEXT":
-            state.newPostText = action.newText;
-            return state;
+            //state.newPostText = action.newText;
+            return {...state, newPostText: action.newText};
         default:
             return state;
     }
@@ -34,5 +36,9 @@ export const updateNewPostTextActionCreator = (newText: string) => {
         newText: newText
     } as const
 }
+
+export type AddPostACType =  ReturnType<typeof addPostActionCreator>
+export type UpdateNewPostTextACType =  ReturnType<typeof updateNewPostTextActionCreator>
+export type ProfileReducerActionsType = AddPostACType | UpdateNewPostTextACType
 
 export default profileReducer;

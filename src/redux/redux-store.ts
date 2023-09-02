@@ -10,6 +10,12 @@ const reducers = combineReducers({
     sidebar: sidebarReducer
 })
 
+type ReducersType = typeof reducers
+export type RootStateType = ReturnType<ReducersType>
+
 const store = legacy_createStore(reducers)
+
+// @ts-ignore
+window.store = store;
 
 export default store;

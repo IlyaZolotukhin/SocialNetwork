@@ -1,16 +1,23 @@
 import React, {ChangeEvent} from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import {
+    addPostActionCreator,
+    ProfileReducerActionsType,
+    updateNewPostTextActionCreator
+} from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
+import {RootStateType} from "../../../redux/redux-store";
+import {Dispatch} from "redux";
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: RootStateType) => {
     return{
-        profilePage: state.profilePage
+        profilePage: state.profilePage,
     }
 }
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: Dispatch<ProfileReducerActionsType>) => {
     return{
-        onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => {dispatch(updateNewPostTextActionCreator(e.currentTarget.value))},
+        onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => {
+            dispatch(updateNewPostTextActionCreator(e.currentTarget.value))},
         onAddPost: () =>{dispatch(addPostActionCreator())}
     }
 }

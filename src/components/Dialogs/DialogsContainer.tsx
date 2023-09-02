@@ -1,17 +1,19 @@
 import React, {ChangeEvent} from "react";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
+import {DialogsReducerActionsType, sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {RootStateType} from "../../redux/redux-store";
+import {Dispatch} from "redux";
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: RootStateType) => {
     return{
         dialogsPage: state.dialogsPage
     }
 }
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: Dispatch<DialogsReducerActionsType>) => {
     return{
         onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>)=>{dispatch(updateNewMessageBodyCreator(e.currentTarget.value))},
-        onSendMessageClick: ()=>{ dispatch(sendMessageCreator()}
+        onSendMessageClick: ()=>{ dispatch(sendMessageCreator())}
     }
 }
 
