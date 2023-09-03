@@ -29,7 +29,7 @@ const dialogsReducer = (state:InitialStateType = initialState , action:DialogsRe
             let body = state.newMessageBody;
             /*state.newMessageBody = '';
             state.messages.push({id: 6, message: body})*/
-            return {...state, messages: [...state.messages, body], newMessageBody: ''};
+            return {...state, messages: [...state.messages,{id: 6, message: body}], newMessageBody: ''};
         default:
             return state;
     }
