@@ -17,11 +17,8 @@ const profileReducer = (state:InitialStateType = initialState, action:ProfileRed
                 message: state.newPostText,
                 likesCount: 0
             };
-           /* state.posts.push(newPost);
-            state.newPostText = "";*/
             return {...state, posts: [...state.posts, newPost], newPostText: ''};
         case "UPDATE-NEW-POST-TEXT":
-            //state.newPostText = action.newText;
             return {...state, newPostText: action.newText};
         default:
             return state;
