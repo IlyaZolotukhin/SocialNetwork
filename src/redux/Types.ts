@@ -14,17 +14,22 @@ export type PostType = {
     likesCount: number
 }
 
+export type PhotoSizeType = {
+    small: string,
+    large: string
+}
+
 export type LocationType = {
     city: string
     country: string
 }
 
-export type UsersType = {
+export type UserType = {
     id: number
     followed: boolean
-    fullName: string
+    name: string
     status: string
-    photoUrl:string
+    photos: PhotoSizeType
     location: LocationType
 }
 
@@ -40,7 +45,7 @@ export type DialogPageType = {
 }
 
 export type UsersPageType = {
-    users: Array<UsersType>
+    users: Array<UserType>
 }
 
 export type SidebarType = {}
