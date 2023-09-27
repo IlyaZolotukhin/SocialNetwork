@@ -1,5 +1,12 @@
 import {UserType} from "./Types";
 
+type InitialStateType = {
+    users: UserType[]
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number
+}
+
 const initialState = {
     users: [
       /*  {id: 1, photoUrl: 'https://cdn-icons-png.flaticon.com/512/149/149452.png',
@@ -15,13 +22,6 @@ const initialState = {
     totalUsersCount: 0,
     currentPage: 1
 };
-
-type InitialStateType = {
-    users: UserType[]
-    pageSize: number,
-    totalUsersCount: number,
-    currentPage: number
-}
 
 const usersReducer = (state:InitialStateType = initialState, action:UserReducerActionsType):InitialStateType => {
     switch (action.type) {
