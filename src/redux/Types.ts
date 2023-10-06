@@ -33,7 +33,29 @@ export type UserType = {
     location: LocationType
 }
 
+export type ContactsType = {
+    facebook: string
+    website: string
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string
+    github: string
+    mainLink: string
+}
+
+export type ProfileType = {
+    aboutMe: string
+    contacts: ContactsType
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: PhotoSizeType
+}
+
 export type ProfilePageType = {
+    profile: ProfileType
     newPostText: string
     posts: Array<PostType>
 }
@@ -46,6 +68,12 @@ export type DialogPageType = {
 
 export type UsersPageType = {
     users: Array<UserType>
+}
+
+export type AuthType = {
+    id: number
+    email: string
+    login: string
 }
 
 export type SidebarType = {}

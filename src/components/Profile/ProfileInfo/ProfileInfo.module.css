@@ -1,4 +1,6 @@
 .profile {
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -8,5 +10,25 @@
 }
 
 .descriptionBlock {
-    padding: 10px;
+    width: 150px;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+
+.descriptionBlock img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+}
+
+.fullName {
+    font-weight: bold;
+    font-size: large;
+}
+
+.aboutMe {
+   text-align: center;
 }

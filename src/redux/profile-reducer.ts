@@ -1,10 +1,11 @@
-import {PostType} from "./Types";
+import {PostType, ProfileType} from "./Types";
 
 const initialState = {
-    newPostText: "",
     posts: [
         {id: 1, message: "Hello!", likesCount: 10},
-        {id: 2, message: "GoodBuy!", likesCount: 20}]
+        {id: 2, message: "GoodBuy!", likesCount: 20}],
+    newPostText: "",
+    profile: null as ProfileType | null
 };
 
 type InitialStateType = typeof initialState
@@ -20,12 +21,16 @@ const profileReducer = (state:InitialStateType = initialState, action:ProfileRed
             return {...state, posts: [...state.posts, newPost], newPostText: ''};
         case "UPDATE-NEW-POST-TEXT":
             return {...state, newPostText: action.newText};
+        case 'SET_USER_PROFILE': {
+            return {...state, profile: action.profile}
+        }
         default:
             return state;
     }
 }
 
 export const addPostActionCreator = () => ({type: 'ADD-POST'} as const)
+export const setUserProfileAC = (profile: ProfileType) => ({type: 'SET_USER_PROFILE',profile} as const)
 
 export const updateNewPostTextActionCreator = (newText: string) => {
     return {
@@ -35,7 +40,9 @@ export const updateNewPostTextActionCreator = (newText: string) => {
 }
 
 export type AddPostACType =  ReturnType<typeof addPostActionCreator>
+export type setUserProfileACType =  ReturnType<typeof setUserProfileAC>
 export type UpdateNewPostTextACType =  ReturnType<typeof updateNewPostTextActionCreator>
-export type ProfileReducerActionsType = AddPostACType | UpdateNewPostTextACType
+
+export type ProfileReducerActionsType = AddPostACType | UpdateNewPostTextACType | setUserProfileACType
 
 export default profileReducer;

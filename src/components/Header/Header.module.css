@@ -1,10 +1,25 @@
 .header {
     grid-area: h;
     background-color: bisque;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 
 .header img {
     width: 200px;
+}
+
+.loginBlock {
+    margin: 10px;
+    display: flex;
+   align-items: center;
+}
+
+.loginBlock a {
+    font-size: larger;
+    color: #aa002f;
+    text-decoration: none;
 }
 

@@ -19,7 +19,7 @@ const initialState = {
         {id: 4, photoUrl: 'https://cdn-icons-png.flaticon.com/512/47/47774.png',
             followed: true, fullName: "Anton", status: "study", location: { city: 'Paris', country: 'France'}}*/
     ],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true
