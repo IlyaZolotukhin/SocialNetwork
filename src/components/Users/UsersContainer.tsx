@@ -31,6 +31,7 @@ type UsersContainerPropsType = {
     unfollow: (userId: number) => void;
     setCurrentPage: (pageNumber: number) => void;
     getUsers: (currentPage: number, pageSize: number) => void;
+    getChangedUsers: (pageNumber: number, pageSize: number) => void;
 }
 
 class UsersContainer extends React.Component<UsersContainerPropsType> {

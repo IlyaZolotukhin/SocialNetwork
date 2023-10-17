@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css'
 import town from "../../assets/images/town.jpeg";
 import {ProfileType} from "../../../redux/Types";
 import Preloader from "../../common/Preloader/Preloader";
+import userPhoto from "../../assets/images/user.png";
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -20,7 +21,7 @@ const ProfileInfo = (props:ProfileInfoPropsType) => {
             </div>
             <div className={s.descriptionBlock}>
                 <div>
-                    <img src={props.profile.photos.large}/>
+                    <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto}/>
                 </div>
                 <div className={s.fullName}>
                     {props.profile.fullName}

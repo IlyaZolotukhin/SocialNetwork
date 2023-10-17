@@ -71,11 +71,24 @@ export const getUsers = (currentPage: number, pageSize: number) => {
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                 dispatch(toggleIsFetching(false))
+                dispatch(setCurrentPage(currentPage))
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
             });
     }
 }
+
+/*export const getChangedUsers = (pageNumber:number, pageSize: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(toggleIsFetching(true))
+        usersAPI.getUsers(pageNumber, pageSize)
+            .then(data => {
+                dispatch(toggleIsFetching(false))
+                dispatch(setCurrentPage(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            });
+    }
+}*/
 
 export const follow = (userId: number) => {
     return (dispatch: Dispatch) => {

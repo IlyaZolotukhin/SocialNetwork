@@ -13,7 +13,7 @@ export const usersAPI = {
                 return response.data
             });
     },
-  /*  getChangedUsers(pageNumber:number, pageSize: number){
+/*    getChangedUsers(pageNumber:number, pageSize: number){
         return instance.get(`users?page=${pageNumber}&count=${pageSize}`)
             .then(response => {
                 return response.data
@@ -33,11 +33,14 @@ export const usersAPI = {
             });
     },
     getProfile(userId: string) {
-       return  axios.get(`https://social-network.samuraijs.com/api/1.0/profile/ ` + userId)
+       return  instance.get(`profile/ ` + userId)
     },
 }
-export const authAPI = {
 
+export const authAPI = {
+me() {
+    return instance.get(`auth/me`)
+}
 }
 
 
