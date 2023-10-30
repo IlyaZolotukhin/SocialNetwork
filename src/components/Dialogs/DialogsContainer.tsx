@@ -20,6 +20,4 @@ let mapDispatchToProps = (dispatch: Dispatch<DialogsReducerActionsType>) => {
 
 // let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
-const DialogsContainer = compose<FC>(connect(mapStateToProps,mapDispatchToProps), withAuthRedirect)(Dialogs);
-
-export default DialogsContainer;
+export default compose<FC>(connect(mapStateToProps,mapDispatchToProps), withAuthRedirect)(Dialogs);

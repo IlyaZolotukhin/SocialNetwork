@@ -4,6 +4,7 @@ import town from "../../assets/images/town.jpeg";
 import {ProfileType} from "../../../redux/Types";
 import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../assets/images/user.png";
+import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -23,12 +24,13 @@ const ProfileInfo = (props:ProfileInfoPropsType) => {
                 <div>
                     <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto}/>
                 </div>
-                <div className={s.fullName}>
+                <ProfileStatus status={"ПРИВЕТ"}/>
+               {/* <div className={s.fullName}>
                     {props.profile.fullName}
                 </div>
                 <div className={s.aboutMe}>
                     {props.profile.aboutMe}
-                </div>
+                </div>*/}
             </div>
         </div>
     );
