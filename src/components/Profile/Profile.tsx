@@ -5,15 +5,21 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {ProfileType} from "../../redux/Types";
 
 type ProfilePropsType = {
+    status: string
     profile: ProfileType | null
     setUserProfile: (profile: ProfileType) => void;
+    updateStatus:(status: string) => void;
 }
 
 const Profile = (props: ProfilePropsType) => {
 
     return (
         <div className={s.profile}>
-            <ProfileInfo profile={props.profile} setUserProfile={props.setUserProfile}/>
+            <ProfileInfo profile={props.profile}
+                         setUserProfile={props.setUserProfile}
+                         status={props.status}
+                         updateStatus={props.updateStatus}
+            />
             <MyPostsContainer />
         </div>
     );

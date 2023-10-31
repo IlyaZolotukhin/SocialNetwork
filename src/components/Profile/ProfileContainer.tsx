@@ -1,12 +1,11 @@
 import React, {FC} from "react";
 import Profile from "./Profile";
-import axios from "axios/index";
 import {RootStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 import {ProfileType} from "../../redux/Types";
 import {compose} from "redux";
-import {getUserProfile} from "../../redux/profile-reducer";
+import {getStatus, getUserProfile, updateStatus} from "../../redux/profile-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
@@ -15,11 +14,14 @@ type PathParamsType = {
 
 type MapStatePropsType = {
     profile: ProfileType | null
+    status: string
 }
 
 type MapDispatchPropsType = {
     setUserProfile: (profile: ProfileType) => void;
     getUserProfile: (userId: string) => void;
+    getStatus: (userId: string) => void;
+    updateStatus:(status: string) => void;
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -34,13 +36,17 @@ class ProfileContainer extends React.Component<PropsType> {
             userId = '2';
         }
         this.props.getUserProfile(userId)
+        this.props.getStatus(userId)
     }
 
     render() {
 
         return (
             <Profile profile={this.props.profile}
-                     setUserProfile={this.props.setUserProfile}/>
+                     status={this.props.status}
+                     setUserProfile={this.props.setUserProfile}
+                     updateStatus={this.props.updateStatus}
+            />
         );
     }
 }
@@ -48,8 +54,9 @@ class ProfileContainer extends React.Component<PropsType> {
 // let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
 let mapStateToProps = (state: RootStateType): MapStatePropsType => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    status: state.profilePage.status
 })
 
 
-export default compose<FC>(connect(mapStateToProps, {getUserProfile}), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose<FC>(connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}), withRouter, withAuthRedirect)(ProfileContainer);
