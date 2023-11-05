@@ -2,11 +2,11 @@ import React, {ChangeEvent} from "react";
 import Post from "./Post/Post";
 import s from '../MyPosts/MyPosts.module.css'
 import {ProfilePageType} from "../../../redux/Types";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
 type PostsPropsType = {
     profilePage: ProfilePageType
-    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
-    onAddPost: () => void;
+    addNewPost: (formData: FormPostDataType) => void;
 }
 
 const MyPosts = (props: PostsPropsType) => {
@@ -16,15 +16,30 @@ const MyPosts = (props: PostsPropsType) => {
     return (
         <div>
             <h3>My posts</h3>
-            <div>
-                <textarea onChange={props.onPostChange} value={props.profilePage.newPostText}/>
-                <button onClick={props.onAddPost}>Add Post</button>
-            </div>
+            <AddPostFormRedux onSubmit={props.addNewPost}/>
             <div className={s.posts}>
                 {postsElements}
             </div>
         </div>
     );
 }
+
+export type FormPostDataType = {
+    newPostText: string
+}
+
+const AddNewPostForm: React.FC<InjectedFormProps<FormPostDataType>> = (props) => {
+
+    return(
+        <form onSubmit={props.handleSubmit}>
+                <div>
+                    <Field placeholder={'Enter your post'} name={'newPostText'} component={'textarea'}/>
+                </div>
+
+                <button>Add Post</button>
+        </form>
+    )
+}
+export const AddPostFormRedux = reduxForm<FormPostDataType>({form: "ProfileAddNewPostForm"})(AddNewPostForm)
 
 export default MyPosts;

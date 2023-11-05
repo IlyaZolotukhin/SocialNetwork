@@ -6,7 +6,6 @@ const initialState = {
     posts: [
         {id: 1, message: "Hello!", likesCount: 10},
         {id: 2, message: "GoodBuy!", likesCount: 20}],
-    newPostText: "",
     profile: null as ProfileType | null,
     status: ""
 };
@@ -18,12 +17,10 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileR
         case "ADD-POST":
             const newPost: PostType = {
                 id: new Date().getTime(),
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0
             };
-            return {...state, posts: [...state.posts, newPost], newPostText: ''};
-        case "UPDATE-NEW-POST-TEXT":
-            return {...state, newPostText: action.newText};
+            return {...state, posts: [...state.posts, newPost]};
         case "SET-STATUS":
             return {...state, status: action.status};
         case 'SET_USER_PROFILE': {
@@ -34,15 +31,9 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileR
     }
 }
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'} as const)
+export const addPostActionCreator = (newPostText: string) => ({type: 'ADD-POST', newPostText } as const)
 export const setUserProfile = (profile: ProfileType) => ({type: 'SET_USER_PROFILE', profile} as const)
 export const setStatus = (status: string) => ({type: 'SET-STATUS', status} as const)
-export const updateNewPostTextActionCreator = (newText: string) => {
-    return {
-        type: "UPDATE-NEW-POST-TEXT",
-        newText: newText
-    } as const
-}
 
 export const getUserProfile = (userId: string) => (dispatch: Dispatch) => {
     usersAPI.getProfile(userId)
@@ -69,10 +60,9 @@ export const updateStatus = (status: string) => (dispatch: Dispatch) => {
 
 export type AddPostACType = ReturnType<typeof addPostActionCreator>
 export type setUserProfileACType = ReturnType<typeof setUserProfile>
-export type UpdateNewPostTextACType = ReturnType<typeof updateNewPostTextActionCreator>
 export type SetStatusACType = ReturnType<typeof setStatus>
 
-export type ProfileReducerActionsType = AddPostACType | UpdateNewPostTextACType
+export type ProfileReducerActionsType = AddPostACType
     | setUserProfileACType | SetStatusACType
 
 export default profileReducer;

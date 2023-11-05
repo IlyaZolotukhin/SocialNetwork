@@ -1,11 +1,10 @@
-import React, {ChangeEvent, FC} from "react";
+import {FC} from "react";
 import {
     addPostActionCreator,
-    ProfileReducerActionsType,
-    updateNewPostTextActionCreator
+    ProfileReducerActionsType
 } from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
-import MyPosts from "./MyPosts";
+import MyPosts, {FormPostDataType} from "./MyPosts";
 import {RootStateType} from "../../../redux/redux-store";
 import {compose, Dispatch} from "redux";
 
@@ -19,9 +18,7 @@ let mapStateToProps = (state: RootStateType) => {
 }
 let mapDispatchToProps = (dispatch: Dispatch<ProfileReducerActionsType>) => {
     return{
-        onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => {
-            dispatch(updateNewPostTextActionCreator(e.currentTarget.value))},
-        onAddPost: () =>{dispatch(addPostActionCreator())}
+        addNewPost:(formData: FormPostDataType) => { dispatch(addPostActionCreator(formData.newPostText))}
     }
 }
 

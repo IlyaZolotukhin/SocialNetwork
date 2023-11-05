@@ -1,6 +1,6 @@
-import React, {ChangeEvent, FC} from "react";
-import {DialogsReducerActionsType, sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialogs-reducer";
-import Dialogs from "./Dialogs";
+import {FC} from "react";
+import {DialogsReducerActionsType, sendMessageCreator} from "../../redux/dialogs-reducer";
+import Dialogs, {FormMessageDataType} from "./Dialogs";
 import {connect} from "react-redux";
 import {RootStateType} from "../../redux/redux-store";
 import {compose, Dispatch} from "redux";
@@ -8,16 +8,14 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 let mapStateToProps = (state: RootStateType) => {
     return{
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch<DialogsReducerActionsType>) => {
     return{
-        onNewMessageChange: (e: ChangeEvent<HTMLTextAreaElement>)=>{dispatch(updateNewMessageBodyCreator(e.currentTarget.value))},
-        onSendMessageClick: ()=>{ dispatch(sendMessageCreator())}
+        addNewMessage: (formData: FormMessageDataType)=>{ dispatch(sendMessageCreator(formData.newMessageBody))}
     }
 }
-
-// let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
 export default compose<FC>(connect(mapStateToProps,mapDispatchToProps), withAuthRedirect)(Dialogs);

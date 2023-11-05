@@ -30,7 +30,7 @@ const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
 
 const Login = () => {
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
+        console.log(formData.login)
     }
 
     return (

@@ -2,12 +2,12 @@ import {AuthType} from "./Types";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 
-type InitialStateType = {
+/*type InitialStateType = {
     id: number,
     email: string,
     login: string,
     isAuth: boolean
-}
+}*/
 
 const initialState = {
     id: 0,
@@ -15,6 +15,8 @@ const initialState = {
     login: "",
     isAuth: false
 };
+
+type InitialStateType = typeof initialState
 
 //reducers
 const authReducer = (state:InitialStateType = initialState, action:authReducerActionsType):InitialStateType => {

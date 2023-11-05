@@ -56,24 +56,32 @@ export type ProfileType = {
 
 export type ProfilePageType = {
     profile: ProfileType
-    newPostText: string
+    status: string
     posts: Array<PostType>
 }
 
 export type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
-    newMessageBody: string
 }
 
 export type UsersPageType = {
-    users: Array<UserType>
+    items: Array<UserType>,
+    totalCount: 30,
+    error: null
 }
 
 export type AuthType = {
     id: number
     email: string
     login: string
+    isAuth: boolean
+}
+
+export type ResponseType<D = {}> = {
+    resultCode: number
+    messages: Array<string>
+    data: D
 }
 
 export type SidebarType = {}
