@@ -1,10 +1,16 @@
+.content {
+    /*display: grid;
+    grid-template-columns: 2fr 10fr;*/
+    display: flex;
+    flex-direction: column;
+}
+
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+    display: flex;
+    flex-direction: row;
 }
 
 .dialogsItems {
-
     color: white;
     margin: 0;
     padding: 0;
@@ -31,34 +37,33 @@
     background-color: coral;
 }
 
-.sendForm {
-    height: 30px;
+.content form {
     display: flex;
-    margin-top: 50px;
+    justify-content: center;
 }
 
-.textarea {
-    margin-right: 5px;
+.content textarea {
+    width: 300px;
+    height: 30px;
+    margin: 5px;
     outline: none;
     resize: none;
-    width: 77%;
-    height: auto;
-    border: 0;
-    padding: 5px;
-    border-radius: 50px;
+    border: 1px solid coral;
+
+    padding: 10px 10px 0px 10px;
+    border-radius: 20px;
     background: #F5F7FB;
-    box-shadow: 0px 1px 2px 0px rgba(29, 33, 38, 0.10), 0px 5px 20px 0px rgba(29, 33, 38, 0.03);
-    font-size: 19px;
+    font-size: large;
     overflow: hidden;/*убрать прокрутку*/
 }
 
-.button {
-    width: 18%;
-    margin-left: auto;
-    border-radius: 40px;
+.content button {
+    height: 45px;
+    margin: 5px;
+    border-radius: 20px;
     background: coral;
     font-size: 26px;
     color: #FFF;
-    border: 0;
+    border: 1px solid white;
     cursor: pointer;
 }

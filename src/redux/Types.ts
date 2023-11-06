@@ -67,7 +67,7 @@ export type DialogPageType = {
 
 export type UsersPageType = {
     items: Array<UserType>,
-    totalCount: 30,
+    totalCount: number,
     error: null
 }
 

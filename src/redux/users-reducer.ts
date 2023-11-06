@@ -78,18 +78,6 @@ export const getUsers = (currentPage: number, pageSize: number) => {
     }
 }
 
-/*export const getChangedUsers = (pageNumber:number, pageSize: number) => {
-    return (dispatch: Dispatch) => {
-        dispatch(toggleIsFetching(true))
-        usersAPI.getUsers(pageNumber, pageSize)
-            .then(data => {
-                dispatch(toggleIsFetching(false))
-                dispatch(setCurrentPage(data.items))
-                dispatch(setTotalUsersCount(data.totalCount))
-            });
-    }
-}*/
-
 export const follow = (userId: number) => {
     return (dispatch: Dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))

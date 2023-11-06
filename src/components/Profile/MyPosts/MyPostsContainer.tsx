@@ -18,7 +18,10 @@ let mapStateToProps = (state: RootStateType) => {
 }
 let mapDispatchToProps = (dispatch: Dispatch<ProfileReducerActionsType>) => {
     return{
-        addNewPost:(formData: FormPostDataType) => { dispatch(addPostActionCreator(formData.newPostText))}
+        addNewPost:(formData: FormPostDataType) => {
+            console.log('akakakak')
+            dispatch(addPostActionCreator(formData.newPostText))
+        }
     }
 }
 
