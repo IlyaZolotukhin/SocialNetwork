@@ -1,5 +1,20 @@
+import s from './Preloader.module.css'
+
+const Preloader = () => {
+    return <div className={s.container}>
+        <div className={s.loader}/>
+    </div>
+}
+
+export default Preloader;
+
+
+
+
+
+/*
 import React from 'react';
-import preloader from '../../assets/images/preloader.gif'
+import preloader from '../../assets/images/Eclipse-1s-200px.svg'
 
 type PreloaderPropsType = {
 
@@ -13,3 +28,4 @@ const Preloader = () => {
 
 export default Preloader;
 
+*/

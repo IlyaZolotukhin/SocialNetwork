@@ -4,6 +4,12 @@
     border: solid 2px red;
 }
 
+
+.formControl.error area,
+.formControl.error input {
+    border: solid 2px red;
+}
+
 .formControl.error span {
     padding-left: 10px;
     color: red;

@@ -17,12 +17,13 @@ type UsersPropsType = {
 }
 
 const Users = (props: UsersPropsType) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+
+  /*  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
-    }
+    }*/
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         props.onPageChanged(value)
     };
@@ -32,7 +33,7 @@ const Users = (props: UsersPropsType) => {
 
                 <Stack spacing={2}>
                     {/*<Pagination count={10} shape="rounded" />*/}
-                    <Pagination count={props.totalUsersCount} onChange={handleChange}  variant="outlined" shape="rounded"/>
+                    <Pagination count={props.totalUsersCount} page={props.currentPage} onChange={handleChange}  variant="outlined" shape="rounded"/>
                 </Stack>
 
               </div>
