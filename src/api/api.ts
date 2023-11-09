@@ -27,14 +27,14 @@ export const usersAPI = {
                 return response.data
             });
     },
-    getProfile(userId: string) {
+    getProfile(userId: number) {
         console.warn('Obsolete method. Please profileAPI object.')
         return profileAPI.getProfile(userId)
     },
 }
 
 export const profileAPI = {
-    getProfile(userId: string) {
+    getProfile(userId: number) {
         return instance.get<ProfileType>(`profile/ ` + userId)
     },
     getStatus(userId: string) {
