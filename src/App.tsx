@@ -14,19 +14,31 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {initializeApp} from "../src/redux/app-reducer";
 import {RootStateType} from "../src/redux/redux-store";
+import Preloader from "../src/components/common/Preloader/Preloader";
 
 type MapStatePropsType = {
     initialized: boolean
 }
 
+const mapStateToProps =(state: RootStateType): MapStatePropsType => ({
+    initialized: state.app.initialized
+})
+
 type AppPropsType = {
     initializeApp: () => void;
+    initialized: boolean
 }
+
 class App extends React.Component<AppPropsType> {
     componentDidMount() {
         this.props.initializeApp();
     }
     render() {
+
+        if(!this.props.initialized){
+            return <Preloader />
+        }
+
         return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
@@ -45,8 +57,6 @@ class App extends React.Component<AppPropsType> {
     }
 }
 
-const mapStateToProps =(state: RootStateType): MapStatePropsType => ({
-    initialized: state.app.initialized
-})
 
-export default compose<FC>(withRouter,connect(null, {initializeApp}))(App);
+
+export default compose<FC>(withRouter,connect(mapStateToProps, {initializeApp}))(App);
