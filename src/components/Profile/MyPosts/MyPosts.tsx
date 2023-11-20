@@ -11,7 +11,7 @@ type PostsPropsType = {
     addNewPost: (formData: FormPostDataType) => void;
 }
 
-const MyPosts = (props: PostsPropsType) => {
+const MyPosts = React.memo((props: PostsPropsType) => {
 
     let postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
@@ -24,7 +24,7 @@ const MyPosts = (props: PostsPropsType) => {
             </div>
         </div>
     );
-}
+});
 
 export type FormPostDataType = {
     newPostText: string
@@ -41,7 +41,7 @@ const AddNewPostForm: React.FC<InjectedFormProps<FormPostDataType>> = (props) =>
                 <button>Add Post</button>
         </form>
     )
-}
+};
 export const AddPostFormRedux = reduxForm<FormPostDataType>({form: "ProfileAddNewPostForm"})(AddNewPostForm)
 
 export default MyPosts;

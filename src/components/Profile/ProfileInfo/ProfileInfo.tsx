@@ -4,7 +4,7 @@ import town from "../../assets/images/town.jpeg";
 import {ProfileType} from "../../../redux/Types";
 import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../assets/images/user.png";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatuswithHooks";
 
 type ProfileInfoPropsType = {
     status: string
@@ -29,7 +29,7 @@ const ProfileInfo = (props:ProfileInfoPropsType) => {
                 <div className={s.fullName}>
                     {props.profile.fullName|| "no name"}
                 </div>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 <div className={s.aboutMe}>
                     <p><b>about me: </b> {props.profile.aboutMe || "no information" }</p>
                 </div>

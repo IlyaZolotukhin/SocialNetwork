@@ -8,6 +8,7 @@
 .dialogs {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .dialogsItems {
@@ -16,7 +17,15 @@
     padding: 0;
 }
 
-.messages {
+.messages1 {
+    margin-right: 10%;
+    text-align: left;
+    padding: 10px;
+}
+
+.messages2 {
+    margin-right: 10%;
+    text-align: right;
     padding: 10px;
 }
 
@@ -33,8 +42,41 @@
     font-weight: bold;
 }
 
-.dialogs a:focus{
+.dialogs a:focus {
     background-color: coral;
+}
+
+.messageBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: end;
+}
+
+.messageBlock img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.messageString {
+
+    margin: 20px 0 20px;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.triangle {
+    margin-bottom: 25px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid;
+    border-width: 10px 0 0 17px;
+    border-color: transparent transparent transparent white;
+
 }
 
 .content form {
@@ -54,7 +96,7 @@
     border-radius: 20px;
     background: #F5F7FB;
     font-size: large;
-    overflow: hidden;/*убрать прокрутку*/
+    overflow: hidden; /*убрать прокрутку*/
 }
 
 .content button {

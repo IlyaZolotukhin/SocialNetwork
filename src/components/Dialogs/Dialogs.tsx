@@ -29,7 +29,7 @@ const Dialogs = (props: DialogsPropsType) => {
                     <div className={s.dialogsItems}>
                         {dialogsElements}
                     </div>
-                    <div className={s.messages}>
+                    <div className={s.messages2}>
                         <div>{messagesElements}</div>
                     </div>
                 </div>
