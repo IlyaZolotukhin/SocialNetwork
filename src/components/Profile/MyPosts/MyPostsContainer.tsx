@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {
-    addPostActionCreator,
+    addPostActionCreator, deletePost,
     ProfileReducerActionsType
 } from "../../../redux/profile-reducer";
 import {connect} from "react-redux";
@@ -18,8 +18,10 @@ let mapStateToProps = (state: RootStateType) => {
 }
 let mapDispatchToProps = (dispatch: Dispatch<ProfileReducerActionsType>) => {
     return{
+        deletePost: (postId: number) => {
+            dispatch(deletePost(postId))
+        },
         addNewPost:(formData: FormPostDataType) => {
-            console.log('akakakak')
             dispatch(addPostActionCreator(formData.newPostText))
         }
     }

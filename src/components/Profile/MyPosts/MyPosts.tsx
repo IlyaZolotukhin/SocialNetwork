@@ -9,11 +9,13 @@ import {Textarea} from "../../../components/common/FormsControls/FormsControls";
 type PostsPropsType = {
     profilePage: ProfilePageType
     addNewPost: (formData: FormPostDataType) => void;
+    deletePost: (postId:number) => void
 }
 
 const MyPosts = React.memo((props: PostsPropsType) => {
 
-    let postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let postsElements = props.profilePage.posts.map(p =>
+        <Post id={p.id} deletePost={props.deletePost} message={p.message} likesCount={p.likesCount} key={p.id}/>)
 
     return (
         <div>

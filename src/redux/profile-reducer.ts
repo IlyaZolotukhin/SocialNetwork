@@ -10,7 +10,7 @@ const initialState = {
     status: ""
 };
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 const profileReducer = (state: InitialStateType = initialState, action: ProfileReducerActionsType): InitialStateType => {
     switch (action.type) {
@@ -26,6 +26,9 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileR
         case 'SET_USER_PROFILE': {
             return {...state, profile: action.profile}
         }
+        case 'DELETE_POST': {
+            return {...state, posts: state.posts.filter(p => p.id !== action.postId) }
+        }
         default:
             return state;
     }
@@ -34,35 +37,31 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileR
 export const addPostActionCreator = (newPostText: string) => ({type: 'ADD-POST', newPostText } as const)
 export const setUserProfile = (profile: ProfileType) => ({type: 'SET_USER_PROFILE', profile} as const)
 export const setStatus = (status: string) => ({type: 'SET-STATUS', status} as const)
+export const deletePost = (postId: number) => ({type: 'DELETE_POST', postId} as const)
 
-export const getUserProfile = (userId: number) => (dispatch: Dispatch) => {
-    usersAPI.getProfile(userId)
-        .then(response => {
+export const getUserProfile = (userId: number) => async (dispatch: Dispatch) => {
+    let response = await usersAPI.getProfile(userId)
             dispatch(setUserProfile(response.data));
-        });
 }
 
-export const getStatus = (userId: string) => (dispatch: Dispatch) => {
-    profileAPI.getStatus(userId)
-        .then(response => {
+export const getStatus = (userId: string) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.getStatus(userId)
             dispatch(setStatus(response.data));
-        });
 }
 
-export const updateStatus = (status: string) => (dispatch: Dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
+export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
+    let response = await profileAPI.updateStatus(status)
             if (response.data.resultCode == 0) {
                 dispatch(setStatus(status));
             }
-        });
 }
 
 export type AddPostACType = ReturnType<typeof addPostActionCreator>
 export type setUserProfileACType = ReturnType<typeof setUserProfile>
 export type SetStatusACType = ReturnType<typeof setStatus>
+export type DeletePostType = ReturnType<typeof deletePost>
 
 export type ProfileReducerActionsType = AddPostACType
-    | setUserProfileACType | SetStatusACType
+    | setUserProfileACType | SetStatusACType | DeletePostType
 
 export default profileReducer;

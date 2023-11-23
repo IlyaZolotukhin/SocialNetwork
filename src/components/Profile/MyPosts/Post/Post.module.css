@@ -8,3 +8,9 @@
     padding: 10px;
 }
 
+.item span {
+    color: maroon;
+    margin: 5px;
+    font-size: small;
+}
+

@@ -5,7 +5,10 @@ import user from "../../../assets/images/user.png";
 type MessageType = {
     message: string
     likesCount: number
+    id: number
+    deletePost: (id: number) => void
 }
+
 
 const Post: React.FC<MessageType> = (props) => {
     return (
@@ -13,8 +16,10 @@ const Post: React.FC<MessageType> = (props) => {
             <img src={user} alt="user"/>
             {props.message}
             <div>
-                <span>like </span>{props.likesCount}
+                <span>like <b>{props.likesCount}</b></span>
+                <span onClick={() => props.deletePost(props.id)}>Delete Post</span>
             </div>
+
         </div>
 
     );
