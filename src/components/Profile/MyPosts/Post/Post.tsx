@@ -1,6 +1,9 @@
 import React from "react";
 import s from './Post.module.css';
 import user from "../../../assets/images/user.png";
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
+import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 type MessageType = {
     message: string
@@ -15,9 +18,10 @@ const Post: React.FC<MessageType> = (props) => {
         <div className={s.item}>
             <img src={user} alt="user"/>
             {props.message}
-            <div>
-                <span>like <b>{props.likesCount}</b></span>
-                <span onClick={() => props.deletePost(props.id)}>Delete Post</span>
+            <div className={s.postTools}>
+                <span><ThumbUpAltOutlinedIcon fontSize="small"/> <b>{props.likesCount}</b></span>
+                <span><ThumbDownOutlinedIcon fontSize="small"/></span>
+                <span onClick={() => props.deletePost(props.id)}><DeleteForeverOutlinedIcon fontSize="small"/></span>
             </div>
 
         </div>

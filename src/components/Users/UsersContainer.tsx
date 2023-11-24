@@ -1,6 +1,13 @@
 import React, {FC} from 'react';
 import {connect} from "react-redux";
-import {followSuccess, requestUsers, setCurrentPage,unfollowSuccess} from "../../redux/users-reducer";
+import {
+    follow,
+    followSuccess,
+    requestUsers,
+    setCurrentPage,
+    unfollow,
+    unfollowSuccess
+} from "../../redux/users-reducer";
 import {RootStateType} from "../../redux/redux-store";
 import {compose} from "redux";
 import {UserType} from "../../redux/Types";
@@ -9,16 +16,6 @@ import Preloader from "../common/Preloader/Preloader";
 import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount,
     getFollowingInProgress, getUsers} from "../../redux/users-selectors";
 
-/*let mapStateToProps = (state: RootStateType) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
 
 let mapStateToProps = (state: RootStateType) => {
     return {
@@ -48,16 +45,16 @@ type UsersContainerPropsType = {
 class UsersContainer extends React.Component<UsersContainerPropsType> {
 
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        const {currentPage, pageSize} = this.props
+        this.props.getUsers(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.getUsers(pageNumber, this.props.pageSize);
+        const {pageSize} = this.props
+        this.props.getUsers(pageNumber, pageSize);
     }
 
     render() {
-
-
         return <>
             {this.props.isFetching ? <Preloader />  : <Users totalUsersCount={this.props.totalUsersCount}
                                                              pageSize={this.props.pageSize}
@@ -75,8 +72,8 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 }
 
 export default compose<FC>(connect(mapStateToProps, {
-    follow: followSuccess,
-    unfollow: unfollowSuccess,
+    follow,
+    unfollow,
     setCurrentPage,
     getUsers: requestUsers
 }))(UsersContainer);

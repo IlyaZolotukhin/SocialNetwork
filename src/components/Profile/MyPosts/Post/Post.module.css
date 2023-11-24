@@ -8,9 +8,14 @@
     padding: 10px;
 }
 
-.item span {
+.postTools {
+    cursor: pointer;
     color: maroon;
-    margin: 5px;
+    margin: 10px 30px;
     font-size: small;
+}
+
+.postTools span {
+    margin-left: 20px;
 }
 

@@ -1,8 +1,9 @@
 import {UserType} from "./Types";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {updateObjectInArray} from "../utils/objectHelpers";
 
-type InitialStateType = {
+export type InitialStateType = {
     users: UserType[]
     pageSize: number,
     totalUsersCount: number,
@@ -33,9 +34,10 @@ const initialState = {
 const usersReducer = (state:InitialStateType = initialState, action:UserReducerActionsType):InitialStateType => {
     switch (action.type) {
         case "FOLLOW":
-            return {...state, users: state.users.map(u =>u.id === action.userId ? {...u,followed: true}: u)}
+            return {...state, users: updateObjectInArray(state, action.userId, "id", {followed: true})}
+           /* return {...state, users: state.users.map(u =>u.id === action.userId ? {...u,followed: true}: u)}*/
         case "UNFOLLOW":
-            return {...state, users: state.users.map(u =>u.id === action.userId ? {...u,followed: false}: u)}
+            return {...state, users: updateObjectInArray(state, action.userId, "id", {followed: false})}
         case "SET_USERS":
             return {...state, users: action.users}
         case "SET_CURRENT_PAGE":

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -11,10 +11,11 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import NewsContainer from "./components/News/NewsContainer";
 import {compose} from "redux";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "../src/redux/app-reducer";
 import {RootStateType} from "../src/redux/redux-store";
 import Preloader from "../src/components/common/Preloader/Preloader";
+import store from "./redux/redux-store";
 
 type MapStatePropsType = {
     initialized: boolean
@@ -59,4 +60,14 @@ class App extends React.Component<AppPropsType> {
 
 
 
-export default compose<FC>(withRouter,connect(mapStateToProps, {initializeApp}))(App);
+const AppContainer = compose<FC>(withRouter,connect(mapStateToProps, {initializeApp}))(App);
+
+const SocialApp = () => {
+   return <Provider store={store}>
+        <BrowserRouter>
+            <AppContainer/>
+        </BrowserRouter>
+    </Provider>
+}
+
+export default SocialApp;
