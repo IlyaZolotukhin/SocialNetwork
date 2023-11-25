@@ -17,11 +17,13 @@ type UsersPropsType = {
 
 const Users = (props: UsersPropsType) => {
 
-    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        props.onPageChanged(value)
-    };
+        const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+            props.onPageChanged(value)
+        };
+
     return (
         <div className={s.container}>
+
             <div className={s.pages}>
                 <Stack spacing={2}>
                     <Pagination count={props.totalUsersCount} page={props.currentPage} onChange={handleChange}

@@ -1,5 +1,7 @@
 .nav {
     grid-area: n;
+    border: 1px solid maroon;
+    border-right: 5px;
     background-color: coral;
     padding: 20px;
 }

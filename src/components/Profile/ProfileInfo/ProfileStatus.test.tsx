@@ -29,4 +29,21 @@ describe("ProfileStatus component", () => {
         let span = root.findByType("span");
         expect(span.children[1]).toBe("SUBSCRIBE TO BASIC")
     })
+
+    test("input should be displayed in editMode instead span", ()=> {
+        const component = create(<ProfileStatus updateStatus={()=>{}} status = "SUBSCRIBE TO BASIC"/>);
+        const root = component.root;
+        let span = root.findByType("span");
+        span.props.onDoubleClick()
+        let input = root.findByType("input")
+        expect(input.props.value).toBe("SUBSCRIBE TO BASIC")
+    })
+
+/*    test("callback should be called", ()=> {
+        const mockCallback = jest.fn();
+        const component = create(<ProfileStatus updateStatus={mockCallback} status = "SUBSCRIBE TO BASIC"/>);
+        const instance = component.getInstance();
+        instance.deactivateEditMode();
+        expect(mockCallback.mock.calls.length).toBe(1)
+    })*/
 })
