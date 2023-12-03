@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/IlyaZolotukhin/socialNetwork/static/css/main.30a82a88.css",
-    "main.js": "/IlyaZolotukhin/socialNetwork/static/js/main.3b2f4d02.js",
+    "main.js": "/IlyaZolotukhin/socialNetwork/static/js/main.1ab4662c.js",
     "static/css/3.1c0a8567.chunk.css": "/IlyaZolotukhin/socialNetwork/static/css/3.1c0a8567.chunk.css",
     "static/js/3.093d6bc7.chunk.js": "/IlyaZolotukhin/socialNetwork/static/js/3.093d6bc7.chunk.js",
     "static/css/493.86113358.chunk.css": "/IlyaZolotukhin/socialNetwork/static/css/493.86113358.chunk.css",
@@ -10,7 +10,7 @@
     "static/media/user.png": "/IlyaZolotukhin/socialNetwork/static/media/user.334291b4cc9644844b2a.png",
     "index.html": "/IlyaZolotukhin/socialNetwork/index.html",
     "main.30a82a88.css.map": "/IlyaZolotukhin/socialNetwork/static/css/main.30a82a88.css.map",
-    "main.3b2f4d02.js.map": "/IlyaZolotukhin/socialNetwork/static/js/main.3b2f4d02.js.map",
+    "main.1ab4662c.js.map": "/IlyaZolotukhin/socialNetwork/static/js/main.1ab4662c.js.map",
     "3.1c0a8567.chunk.css.map": "/IlyaZolotukhin/socialNetwork/static/css/3.1c0a8567.chunk.css.map",
     "3.093d6bc7.chunk.js.map": "/IlyaZolotukhin/socialNetwork/static/js/3.093d6bc7.chunk.js.map",
     "493.86113358.chunk.css.map": "/IlyaZolotukhin/socialNetwork/static/css/493.86113358.chunk.css.map",
@@ -18,6 +18,6 @@
   },
   "entrypoints": [
     "static/css/main.30a82a88.css",
-    "static/js/main.3b2f4d02.js"
+    "static/js/main.1ab4662c.js"
   ]
 }
