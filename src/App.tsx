@@ -69,7 +69,7 @@ const AppContainer = compose<FC>(withRouter,connect(mapStateToProps, {initialize
 
 const SocialApp = () => {
    return <Provider store={store}>
-        <HashRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter >
             <AppContainer/>
         </HashRouter>
     </Provider>
