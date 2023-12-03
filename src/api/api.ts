@@ -4,7 +4,7 @@ import {ProfileType, ResponseType, UsersPageType} from "../redux/Types";
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY": "e59f45c0-b15b-4904-8726-0da8edb82373"}
+    headers: {"API-KEY": "cd4bd2ff-0ff8-448a-9214-a89b625898c0"}
 })
 
 export const usersAPI = {

@@ -19,7 +19,7 @@ const Post: React.FC<MessageType> = (props) => {
             <img src={user} alt="user"/>
             {props.message}
             <div className={s.postTools}>
-                <span><ThumbUpAltOutlinedIcon fontSize="small"/> <b>{props.likesCount}</b></span>
+                <span><ThumbUpAltOutlinedIcon  /> <b>{props.likesCount}</b></span>
                 <span><ThumbDownOutlinedIcon fontSize="small"/></span>
                 <span onClick={() => props.deletePost(props.id)}><DeleteForeverOutlinedIcon fontSize="small"/></span>
             </div>

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import { HashRouter, Route, withRouter} from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -69,9 +69,9 @@ const AppContainer = compose<FC>(withRouter,connect(mapStateToProps, {initialize
 
 const SocialApp = () => {
    return <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter basename={process.env.PUBLIC_URL}>
             <AppContainer/>
-        </BrowserRouter>
+        </HashRouter>
     </Provider>
 }
 
