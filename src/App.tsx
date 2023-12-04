@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import { HashRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, Route, withRouter} from "react-router-dom";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -15,8 +15,6 @@ import {RootStateType} from "../src/redux/redux-store";
 import Preloader from "../src/components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hooks/withSuspense";
-//import ProfileContainer from "./components/Profile/ProfileContainer";
-//import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -26,7 +24,7 @@ type MapStatePropsType = {
     initialized: boolean
 }
 
-const mapStateToProps =(state: RootStateType): MapStatePropsType => ({
+const mapStateToProps = (state: RootStateType): MapStatePropsType => ({
     initialized: state.app.initialized
 })
 
@@ -39,10 +37,11 @@ class App extends React.Component<AppPropsType> {
     componentDidMount() {
         this.props.initializeApp();
     }
+
     render() {
 
-        if(!this.props.initialized){
-            return <Preloader />
+        if (!this.props.initialized) {
+            return <Preloader/>
         }
 
         return (
@@ -64,12 +63,11 @@ class App extends React.Component<AppPropsType> {
 }
 
 
-
-const AppContainer = compose<FC>(withRouter,connect(mapStateToProps, {initializeApp}))(App);
+const AppContainer = compose<FC>(withRouter, connect(mapStateToProps, {initializeApp}))(App);
 
 const SocialApp = () => {
-   return <Provider store={store}>
-        <HashRouter >
+    return <Provider store={store}>
+        <HashRouter>
             <AppContainer/>
         </HashRouter>
     </Provider>
