@@ -46,12 +46,13 @@ export type ContactsType = {
 
 export type ProfileType = {
     aboutMe: string
-    contacts: ContactsType
+    photos: PhotoSizeType
+
+    userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
-    userId: number
-    photos: PhotoSizeType
+    contacts: ContactsType
 }
 
 export type ProfilePageType = {

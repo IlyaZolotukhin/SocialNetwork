@@ -2,7 +2,7 @@ import s from './FormsControls.module.css'
 import {Field, WrappedFieldProps} from 'redux-form'
 import React from "react";
 
-export type PropsType = {
+type PropsType = {
     placeholder: string
 }
 export type FormControlPropsType = WrappedFieldProps & PropsType

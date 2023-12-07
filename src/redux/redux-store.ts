@@ -23,6 +23,7 @@ export const store = createStore(reducers, applyMiddleware(thunkMiddleware))
 //type ReducersType = typeof reducers
 export type RootStateType = ReturnType<typeof store.getState>
 
+
 export type AppDispatch = ThunkDispatch<RootStateType, unknown, AnyAction>
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootStateType, unknown, AnyAction>

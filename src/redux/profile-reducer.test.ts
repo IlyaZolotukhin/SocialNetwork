@@ -5,7 +5,7 @@ let initialState: InitialStateType = {
     posts: [
         {id: 1, message: "Hello!", likesCount: 10},
         {id: 2, message: "GoodBuy!", likesCount: 20}],
-    profile: null as ProfileType | null,
+    profile: null as unknown as ProfileType,
     status: ""
 };
 

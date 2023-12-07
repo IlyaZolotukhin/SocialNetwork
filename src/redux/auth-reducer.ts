@@ -12,7 +12,7 @@ import {stopSubmit} from "redux-form";
 }*/
 
 const initialState = {
-    id: null as null | number,
+    id: 1,
     email: "",
     login: "",
     isAuth: false

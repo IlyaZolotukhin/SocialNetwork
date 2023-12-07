@@ -1,10 +1,11 @@
 import axios from "axios";
-import {ProfileType, ResponseType, UsersPageType} from "../redux/Types";
+import {PhotoSizeType, ProfileType, ResponseType, UsersPageType} from "../redux/Types";
+import {ProfileFormDataType} from "../components/Profile/ProfileInfo/ProfileDataForm";
 
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY": "cd4bd2ff-0ff8-448a-9214-a89b625898c0"}
+    headers: {"API-KEY": "672a3475-5358-46e1-b5c9-5ccc4db7abe6"}
 })
 
 export const usersAPI = {
@@ -28,7 +29,6 @@ export const usersAPI = {
             });
     },
     getProfile(userId: number) {
-        console.warn('Obsolete method. Please profileAPI object.')
         return profileAPI.getProfile(userId)
     },
 }
@@ -42,7 +42,21 @@ export const profileAPI = {
     },
     updateStatus(status: string) {
         return instance.put<ResponseType>(`profile/status`, {status: status})
-    }
+    },
+    savePhoto(photoFile: File) {
+        const formData = new FormData();
+        formData.append('image', photoFile)
+        return instance.put<ResponseType<{
+            photos: PhotoSizeType
+        }>>(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    },
+    saveProfile(profile:ProfileFormDataType) {
+        return instance.put<ResponseType>(`profile`, profile)
+    },
 }
 
 export const authAPI = {

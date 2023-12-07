@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import './App.css';
+import s from './App.module.css';
 import Navbar from "./components/Navbar/Navbar";
-import {HashRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, Route, withRouter, Switch as Routes, Redirect} from "react-router-dom";
 import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
+import SettingsContainer from "./components/Settings/SettingsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -45,17 +45,24 @@ class App extends React.Component<AppPropsType> {
         }
 
         return (
-            <div className='app-wrapper'>
+            <div className={s.appWrapper}>
                 <HeaderContainer/>
                 <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
-                    <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
-                    <Route path='/users' render={() => <UsersContainer/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
-                    <Route path="/news" render={() => <NewsContainer/>}/>
-                    <Route path="/music" render={() => <Music/>}/>
-                    <Route path="/settings" render={() => <Settings/>}/>
+                <div className={s.appWrapperContent}>
+                    <Routes>
+                        <Route exact path='/'
+                               render={() => <Redirect to='/profile'/>}
+                        />
+                        <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+                        <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
+                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path="/news" render={() => <NewsContainer/>}/>
+                        <Route path="/music" render={() => <Music/>}/>
+                        <Route path="/settings" render={() => <SettingsContainer/>}/>
+                    </Routes>
+
+
                 </div>
             </div>
         );
