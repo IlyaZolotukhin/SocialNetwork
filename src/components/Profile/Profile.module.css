@@ -1,12 +1,11 @@
 .profile {
-
+    display: flex;
+    flex-direction: row;
 }
 
-.profile img {
-    width: 1000px;
-    height: 300px;
-}
-
-.descriptionBlock {
-    padding: 10px;
+@media all and (max-width: 850px) {
+    .profile {
+        display: flex;
+        flex-direction: column;
+    }
 }

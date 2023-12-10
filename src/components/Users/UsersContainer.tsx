@@ -1,20 +1,19 @@
 import React, {FC} from 'react';
 import {connect} from "react-redux";
-import {
-    follow,
-    followSuccess,
-    requestUsers,
-    setCurrentPage,
-    unfollow,
-    unfollowSuccess
-} from "../../redux/users-reducer";
+import {follow, requestUsers, setCurrentPage, unfollow} from "../../redux/users-reducer";
 import {RootStateType} from "../../redux/redux-store";
 import {compose} from "redux";
 import {UserType} from "../../redux/Types";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {getCurrentPage, getIsFetching, getPageSize, getTotalUsersCount,
-    getFollowingInProgress, getUsers} from "../../redux/users-selectors";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../redux/users-selectors";
 
 
 let mapStateToProps = (state: RootStateType) => {

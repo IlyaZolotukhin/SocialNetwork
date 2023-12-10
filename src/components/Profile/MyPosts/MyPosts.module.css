@@ -1,3 +1,30 @@
 .posts {
-    margin: 10px;
+    width: 100%;
+    padding: 20px;
+    background-color: coral;
+    margin-left: 5%;
+}
+
+.posts form {
+    display: flex;
+    justify-content: center;
+}
+
+.posts button {
+    height: 45px;
+    margin: 5px;
+    border-radius: 20px;
+    background: coral;
+    font-size: large;
+    color: maroon;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+@media all and (max-width: 850px) {
+    .posts {
+        width: 80%;
+        padding: 20px;
+        background-color: bisque;
+    }
 }

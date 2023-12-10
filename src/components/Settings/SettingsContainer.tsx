@@ -4,8 +4,10 @@ import {RootStateType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {savePhoto} from "../../redux/profile-reducer";
+import {savePhoto, saveProfile} from "../../redux/profile-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {ProfileType} from "../../redux/Types";
+import {ProfileFormDataType} from "../Profile/ProfileInfo/ProfileDataForm";
 
 
 type PathParamsType = {
@@ -13,11 +15,12 @@ type PathParamsType = {
 }
 
 type MapStatePropsType = {
-
+    profile: ProfileType | null
 }
 
 type MapDispatchPropsType = {
     savePhoto: (file: File) => void;
+    saveProfile: (formData:ProfileFormDataType) => Promise<any>;
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -32,7 +35,8 @@ class SettingsContainer extends React.Component<PropsType> {
             <Settings
                      isOwner = {!this.props.match.params.userId}
                      savePhoto={this.props.savePhoto}
-
+                     profile={this.props.profile}
+                     saveProfile={this.props.saveProfile}
             />
         );
     }
@@ -40,10 +44,10 @@ class SettingsContainer extends React.Component<PropsType> {
 
 
 let mapStateToProps = (state: RootStateType): MapStatePropsType => ({
-
+    profile: state.profilePage.profile,
 
 })
 
 
 export default compose<FC>(connect(mapStateToProps,
-    {savePhoto}), withRouter, withAuthRedirect)(SettingsContainer);
+    {savePhoto, saveProfile}), withRouter, withAuthRedirect)(SettingsContainer);

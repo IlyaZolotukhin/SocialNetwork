@@ -15,13 +15,13 @@ type PostsPropsType = {
 const MyPosts = React.memo((props: PostsPropsType) => {
 
     let postsElements = props.profilePage.posts.map(p =>
-        <Post id={p.id} deletePost={props.deletePost} message={p.message} likesCount={p.likesCount} key={p.id}/>)
+        <Post profile={props.profilePage.profile} id={p.id} deletePost={props.deletePost} message={p.message} likesCount={p.likesCount} key={p.id}/>)
 
     return (
-        <div>
+        <div className={s.posts}>
             <h3>My posts</h3>
             <AddPostFormRedux onSubmit={props.addNewPost}/>
-            <div className={s.posts}>
+            <div>
                 {postsElements}
             </div>
         </div>
